@@ -1,0 +1,102 @@
+& {
+  margin-left: 0px;
+  padding-top: 20px;
+
+  display: block;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.query_sidebar {
+
+  min-height: 100%;
+  width: 350px;
+}
+
+.go.btn {
+  padding: 5px;
+  text-align: center;
+  margin-right: 20px;
+  display: inline-block;
+  float: right;
+  width: 40px;
+  cursor: pointer;
+  &:hover {
+    background-color: #225;
+    color: white;
+  }
+}
+
+@media #{$mobile} {
+  .go.btn {
+    display: none;
+  }
+}
+
+.control-row {
+  min-height: 40px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
+
+.control-row label {
+  width: 80px;
+  text-align: right;
+  margin-right: 5px;
+  color: gray;
+  margin-top: 5px;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+.control-row .control-input {
+  display: inline-block;
+}
+
+.control-input {
+  select, input {
+    padding: 5px;
+  }
+  select, input, .multiselect-container {
+    width: 148px;
+    min-height: 30px;
+  }
+}
+
+@media #{$mobile} {
+
+  .control-row label {
+    width: 100%;
+    text-align: left;
+  }
+
+  .control-row .control-input {
+    display: block;
+    width: 95%;
+  }
+
+//  .control-row, .filter_row {
+//    zoom: 1.5;
+//  }
+
+  .control-input {
+    select, input {
+      padding: 5px;
+    }
+    select, input, .multiselect-container {
+      width: 100%;
+      min-height: 30px;
+    }
+  }
+}
+
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+  display: inline-block;
+  position: absolute;
+  background-image: url('/static/images/ajax-loader.gif');
+  background-repeat: no-repeat;
+}

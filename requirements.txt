@@ -1,0 +1,10 @@
+addict
+bcrypt
+flask
+flask-admin
+flask_dance
+flask_peewee
+flask-security
+peewee
+preparable
+pudgy>=0.1.4

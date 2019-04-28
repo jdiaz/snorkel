@@ -1,0 +1,204 @@
+.carousel-control {
+  top: 50%;
+}
+
+.largeicon {
+  height: 128px;
+  width: 128px;
+}
+
+.midsection {
+  img {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  text-align: center;
+}
+
+.logo {
+  margin-left: 20px;
+}
+
+.section {
+  h1,h2,h3,h4,h5 {
+    margin-bottom: 20px;
+  }
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+.section ul {
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 24px;
+
+}
+
+.carousel {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.overview {
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+div {
+  font-size: 24px;
+  line-height: 1.5em;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.dataset_tile {
+  font-size: large;
+  border-bottom: 1px dotted gray;
+  margin: 5px;
+  font-weight: light;
+
+}
+
+.howitworks {
+  background: #F8F8FF;
+}
+
+.footer {
+  background: #003;
+  height: 50px;
+  margin-top: 20px;
+
+  a {
+    line-height: 2em;
+    vertical-align: middle;
+    color: white;
+    margin: 0px 10px;
+    margin-left: 50px;
+  }
+}
+
+.whyusesnorkel {
+  h1, h2, h3, h4, h5 {
+  }
+  padding: 0;
+}
+
+.section {
+  min-height: 400px;
+  padding: 50px 50px;
+  padding-bottom: 0px;
+}
+
+.section.one {
+  background-color: #fafafa;
+}
+
+.section img {
+  max-width: 100%;
+}
+
+li {
+  line-height: 1.5em;
+}
+
+.centered{
+    text-align: center;
+}
+#page-top{
+    background: #F8F8FF;
+    position: relative;
+    padding-bottom:20px;
+}
+#page-top h1{
+    line-height: 1.45em;
+    position: absolute;
+    top: 30%;
+}
+#page-top h1 span{
+    background: rgba(51,51,51,.95);
+    color: #fff;
+    padding: 5px 10px;
+    box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+
+}
+
+
+
+
+/* Desktops and laptops ----------- */
+@media #{$computer} {
+
+    .btn {
+      width: 200px;
+      margin: 10px;
+    }
+
+    .container-wrapper{
+        width: 1080px;
+        margin: 0 auto;
+        padding-bottom:70px;
+      }
+    #page-top h1{
+        width: 480px;
+        margin-left:20px;
+    }
+
+    #page-top {
+        zoom: 1.5;
+    }
+}
+/* iPads (portrait and landscape) ----------- */
+@media #{$netbook} {
+    .container-wrapper{
+        width: 748px;
+        padding-bottom:70px;
+    }
+    #page-top > .container{
+        width: 768px !important;
+    }
+    #page-top h1{
+        width: 480px;
+    }
+    #page-top {
+      zoom: 1;
+    }
+}
+@media #{$device} {
+    .container-wrapper{
+        width: 98%;
+        padding-bottom: 30px;
+    }
+    #page-top > .container{
+        width: 100% !important;
+    }
+    #page-top h1{
+        width: 480px;
+    }
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media #{$mobile} {
+    .container-wrapper{
+        width: 98%;
+        padding-bottom: 30px;
+    }
+    #page-top > .container{
+        width: 100% !important;
+    }
+    #page-top h1{
+        width: 100%;
+    }
+    #page-top {
+      zoom: 1;
+    }
+}
+

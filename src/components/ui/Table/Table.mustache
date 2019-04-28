@@ -1,0 +1,15 @@
+<table class='table table-striped'>
+<thead>
+  {{ #headers }}
+    <th>{{ . }}</th>
+  {{ /headers }}
+</thead>
+
+{{ #table }}
+  <tr>
+    {{ #. }}
+      <td>{{ . }}</td>
+    {{ /. }}
+  </tr>
+{{ /table }}
+</table>

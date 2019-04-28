@@ -1,0 +1,52 @@
+<title>{{ __title__ }}</title>
+
+{{ add_stylesheet("vendor/bootstrap.min.css") }}
+{{ add_stylesheet("vendor/bootstrap.flatly.css") }}
+{{ add_stylesheet("main.css") }}
+{{ add_stylesheet("box.css") }}
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
+<div class='pageheader'>
+  <div class='clearfix'>
+    <h3 class='lfloat logo'><a href='{{ url_for('get_index') }}'>snorkel<small class='superscript'>lite</small></a></h3>
+    <a href='{{ url_for('get_index') }}'><img class='lfloat snorkel_icon mll' src='/static/images/snorkle_icon.png'></img></a>
+
+    <div class='lfloat clearfix'>
+      {{ table_selector }}
+    </div>
+
+    <div class='rfloat mrl'>
+      {{ user_button }}
+      {{ login_button or "" }}
+    </div>
+  </div>
+
+</div>
+
+<div class='body_spacer'>
+</div>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+{% block body %}
+
+{% endblock %}
+
+{% block footer %}
+
+  {{ user_modal }}
+{% endblock %}

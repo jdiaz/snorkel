@@ -1,0 +1,146 @@
+.lfloat {
+  float: left;
+}
+
+.rfloat {
+  float: right;
+}
+
+& {
+  padding: 0px;
+  margin: 0px;
+}
+
+.results {
+  margin-left: 360px;
+  margin-right: 5px;
+}
+
+@media #{$mobile} {
+  .logo {
+    display: none;
+  }
+
+  .results {
+    margin-left: 5px;
+    display: none;
+  }
+
+  .sidebar_pane {
+    display: none;
+  }
+
+  .results.active, .sidebar_pane.active {
+    display: block;
+  }
+
+}
+
+.results_pane {
+  width: 100%;
+}
+
+.sidebar_pane {
+  padding-left: 0px;
+  position: fixed;
+  top: 50px;
+  height: calc(100% - 50px);
+  background-color: #f6f6f6;;
+  width: 340px;
+  padding-bottom: 150px;
+
+}
+
+.sidebar_pane {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+@media #{$mobile} {
+  .sidebar_pane {
+    width: 100%;
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  .query_sidebar {
+    height: 100%;
+    width: 100%;
+  }
+
+
+
+
+}
+
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.throbber,
+.welcomer {
+  text-align: center;
+  margin-top: 150px;
+
+  .heading {
+    font-size: 32px
+  }
+
+  .subheading {
+    font-size: 20px;
+  }
+
+}
+
+
+
+#report_bug {
+  float: right;
+  display: block;
+  margin-right: 10px;
+}
+
+#status_bar {
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+
+  left: 0px;
+  right: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+
+
+  z-index: 100;
+  background-color: #ededed;
+}
+
+
+#mobile_buttons {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  left: 0px;
+  right: 0px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #003;
+}
+
+@media #{$mobile} {
+  #mobile_buttons {
+    display: block;
+
+    .go.btn {
+      display: none;
+    }
+    .go.btn.display {
+      display: inline-block;
+    }
+  }
+}

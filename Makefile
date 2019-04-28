@@ -1,49 +1,58 @@
-DOCKER_BUILD_ARGS ?=
-.PHONY:  all clean image run-image run-image-tour
+VERSION=`cat src/version.py | sed 's/__version__=//;s/"//g'`
+ARCH="linux-x86_64"
+default: tags cscope
 
-all:
-	cd snorkel && npm install && cd ..
+run:
+				python -m src.main
 
-clean:
-	cd snorkel && rm -rf node_modules && cd ..
+dev:
+				TURBO_PUDGY=1 python -m src.main
 
-image:
-	docker build -t snorkel $(DOCKER_BUILD_ARGS) .
+setup: install-deps setup-db
+setup-db:
+				RESET=1 python src/models.py
 
-dev: DOCKER_BUILD_ARGS = --build-arg DEV=1
-dev: image run-image-dev
+install-deps:
+				pip install -r requirements.txt
 
-run-image:
-	docker run \
-		--rm \
-		-e DATA_DIR=/var/data_dir \
-		-v $(shell pwd)/data_dir:/var/data_dir \
-		-p 3000:3000 \
-		-p 59036:59036/udp \
-		-ti \
-		snorkel
+tags:
+				ctags-exuberant -R src/
 
-run-image-tour:
-	docker run \
-		--rm \
-		-e SHOW_TOUR=true \
-		-e UPLOAD_CSV=true \
-		-e DATA_DIR=/var/data_dir \
-		-v $(shell pwd)/data_dir:/var/data_dir \
-		-p 3000:3000 \
-		-p 59036:59036/udp \
-		-ti \
-		snorkel
+cscope:
+				pycscope -R -S src/
 
-run-image-dev:
-	docker run \
-		--rm \
-		-e SHOW_TOUR=true \
-		-e UPLOAD_CSV=true \
-		-e DATA_DIR=/var/data_dir \
-		-v $(shell pwd)/data_dir:/var/data_dir \
-		-v $(shell pwd)/snorkel/:/snorkel \
-		-p 3000:3000 \
-		-p 59036:59036/udp \
-		-ti \
-		snorkel bash
+sybil:
+				mkdir -p build/go
+				GOPATH=`readlink -f build/go` go get github.com/logv/sybil
+				mkdir -p src/backend/bin/
+				cp build/go/bin/sybil src/backend/bin/sybil
+
+virtualenv:
+				virtualenv dev2 -p python2
+				virtualenv dev3 -p python3
+
+binary2:
+				. dev2/bin/activate; \
+				python setup.py bdist_wheel; \
+
+binary3:
+				. dev3/bin/activate; \
+				python setup.py bdist_wheel; \
+
+binary-package: binary2 binary3
+
+upload2:
+				. dev2/bin/activate; \
+				python setup.py bdist_wheel upload; \
+
+upload3:
+				. dev3/bin/activate; \
+				python setup.py bdist_wheel upload; \
+
+upload-package: upload2 upload3
+
+source-package:
+				python setup.py sdist build
+				cp dist/snorkel-lite-${VERSION}.tar.gz dist/snorkel-lite-current.tar.gz
+
+.PHONY: tags clean build cscope run dev

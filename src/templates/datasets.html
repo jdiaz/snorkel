@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class='container'>
+
+  <div>
+    <h1>Datasets</h1>
+    <input class='input-block-level dataset_finder pbl' style='zoom: 1.25' />
+  </div>
+
+  <div class='mtl'>
+    {% for super in groups %}
+      <div class='superset' id={{ super }}>
+        <h1>
+        &gt; {{super}}
+        </h1>
+
+        {% for t in table_groups[super] %}
+          <div class='dataset_tile'>
+            <h3>
+              {% if t %}
+                {% set table = "{}@{}".format(super, t)  %}
+              {% else %}
+                {% set table = super %}
+              {% endif %}
+
+              <a href='{{ url_for('get_view', table=table, view="table") }}'>
+                {{ t or super }}
+              </a>
+            </h3>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

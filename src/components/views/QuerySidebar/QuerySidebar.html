@@ -1,0 +1,42 @@
+<div class='sidebar clearfix' id="query_sidebar">
+
+  <form>
+    {% for control in viewcontrols %}
+      {{ control }}
+    {% endfor %}
+
+    {{ querycontrols }}
+  </form>
+
+  <h3 class='ml-4'>Filters</h3>
+
+    <div id="filters">
+
+      <div class='filter_group query_filters'>
+        {% for filter in filters %}
+          {{ filter }}
+        {% endfor %}
+      </div>
+
+      <div class="mtm mbm" style="text-align: right;">
+        <small>
+          <span href="" name="compare" class="btn-link compare_filter mr-4">Add comparison filters</span>
+        </small>
+      </div>
+
+      <div class='filter_group hidden compare_filters' data-filter-type="compare">
+        <h3 class='ml-4'>Comparison Filters</h3>
+        {% for filter in compare_filters %}
+          {{ filter }}
+        {% endfor %}
+
+
+      </div>
+    </div>
+  </div>
+
+  <h3 class='ml-4'>Stats</h3>
+
+    {{ stats }}
+
+</div>
